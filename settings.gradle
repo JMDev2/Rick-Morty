@@ -1,0 +1,11 @@
+dependencyResolutionManagement {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+rootProject.name = "Rick App"
+include ':app'
+include ':common'
+include ':etourism'
+include ':dashboard'
