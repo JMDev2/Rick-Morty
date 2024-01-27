@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_character">
+
+    <fragment
+        android:id="@+id/navigation_character"
+        android:name="com.ekenya.rnd.dashboard.ui.HomeFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/navigation_locations"
+        android:name="com.ekenya.rnd.dashboard.locationsFragment"
+        android:label="fragment_locations"
+        tools:layout="@layout/fragment_locations" />
+    <fragment
+        android:id="@+id/navigation_episodes"
+        android:name="com.ekenya.rnd.dashboard.episodesFragment"
+        android:label="fragment_episodes"
+        tools:layout="@layout/fragment_episodes" />
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.ekenya.rnd.dashboard.settingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
