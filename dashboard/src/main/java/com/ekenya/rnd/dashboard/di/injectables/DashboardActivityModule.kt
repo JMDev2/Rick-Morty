@@ -3,7 +3,6 @@ package com.ekenya.rnd.dashboard.di.injectables
 import androidx.lifecycle.ViewModel
 import com.ekenya.rnd.baseapp.di.ViewModelKey
 import com.ekenya.rnd.dashboard.MainActivity
-import com.ekenya.rnd.dashboard.ui.HomeFragment
 import com.ekenya.rnd.dashboard.ui.HomeViewModel
 import dagger.Binds
 import dagger.Module

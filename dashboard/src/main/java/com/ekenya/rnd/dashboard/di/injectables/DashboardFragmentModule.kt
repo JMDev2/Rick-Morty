@@ -2,7 +2,7 @@ package com.ekenya.rnd.dashboard.di.injectables
 
 import androidx.lifecycle.ViewModel
 import com.ekenya.rnd.baseapp.di.ViewModelKey
-import com.ekenya.rnd.dashboard.ui.HomeFragment
+import com.ekenya.rnd.dashboard.CharacterFragment
 import com.ekenya.rnd.dashboard.ui.HomeViewModel
 import dagger.Binds
 import dagger.Module
@@ -18,7 +18,6 @@ abstract class DashboardFragmentModule {
         abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
 
         @ContributesAndroidInjector(modules = [HomeFragmentModule::class])
-        abstract fun contributeAllAssetsFragment(): HomeFragment
-
+        abstract fun contributeAllAssetsFragment(): CharacterFragment
     }
 }

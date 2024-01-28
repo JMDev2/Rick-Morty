@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ekenya.rnd.dashboard.R
+import com.ekenya.rnd.common.abstractions.BaseDaggerFragment
+import com.ekenya.rnd.dashboard.databinding.FragmentEpisodesBinding
+import com.ekenya.rnd.dashboard.databinding.FragmentLocationsBinding
 
 
-class HomeFragment : Fragment() {
-
+class locationsFragment : BaseDaggerFragment() {
+   private lateinit var binding: FragmentLocationsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+        binding = FragmentLocationsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
 
