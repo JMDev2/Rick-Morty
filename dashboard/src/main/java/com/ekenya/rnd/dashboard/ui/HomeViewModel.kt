@@ -22,9 +22,10 @@ class HomeViewModel @Inject constructor(private val repository: CharacterResposi
         repository.getCharacter().collect{
             characterLiveData.postValue(it)
         }
-
-        fun observeCharacterLiveData(): LiveData<Resource<CharacterResponse?>>{
-            return characterLiveData
-        }
     }
+
+    fun observeCharacterLiveData(): LiveData<Resource<CharacterResponse?>>{
+            return characterLiveData
+    }
+
 }

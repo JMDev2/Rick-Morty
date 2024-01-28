@@ -9,7 +9,11 @@
         android:id="@+id/navigation_character"
         android:name="com.ekenya.rnd.dashboard.CharacterFragment"
         android:label="fragment_character"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character" >
+        <action
+            android:id="@+id/action_navigation_character_to_characterDetailsFragment"
+            app:destination="@id/characterDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_episodes"
@@ -26,5 +30,10 @@
         android:name="com.ekenya.rnd.dashboard.ui.locationsFragment"
         android:label="fragment_locations"
         tools:layout="@layout/fragment_locations" />
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.ekenya.rnd.dashboard.CharacterDetailsFragment"
+        android:label="fragment_character_details"
+        tools:layout="@layout/fragment_character_details" />
 
 </navigation>
