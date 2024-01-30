@@ -3,37 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_character">
-
+    app:startDestination="@id/characterFragment">
     <fragment
-        android:id="@+id/navigation_character"
+        android:id="@+id/characterFragment"
         android:name="com.ekenya.rnd.dashboard.CharacterFragment"
         android:label="fragment_character"
         tools:layout="@layout/fragment_character" >
-        <action
-            android:id="@+id/action_navigation_character_to_characterDetailsFragment"
-            app:destination="@id/characterDetailsFragment" />
-    </fragment>
 
+        <action
+            android:id="@+id/action_characterFragment_to_characterDetailsFragment2"
+            app:destination="@id/characterDetailsFragment2" />
+    </fragment>
     <fragment
-        android:id="@+id/navigation_episodes"
-        android:name="com.ekenya.rnd.dashboard.ui.episodesFragment"
-        android:label="fragment_episodes"
-        tools:layout="@layout/fragment_episodes" />
-    <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.ekenya.rnd.dashboard.ui.settingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
-        android:id="@+id/locationsFragment"
-        android:name="com.ekenya.rnd.dashboard.ui.locationsFragment"
-        android:label="fragment_locations"
-        tools:layout="@layout/fragment_locations" />
-    <fragment
-        android:id="@+id/characterDetailsFragment"
+        android:id="@+id/characterDetailsFragment2"
         android:name="com.ekenya.rnd.dashboard.CharacterDetailsFragment"
         android:label="fragment_character_details"
         tools:layout="@layout/fragment_character_details" />
-
+<!--    <fragment-->
+<!--        android:id="@+id/episodesFragment"-->
+<!--        android:name="com.ekenya.rnd.dashboard.ui.EpisodesFragment"-->
+<!--        android:label="fragment_episodes"-->
+<!--        tools:layout="@layout/fragment_episodes" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/locationsFragment"-->
+<!--        android:name="com.ekenya.rnd.dashboard.ui.LocationsFragment"-->
+<!--        android:label="fragment_locations"-->
+<!--        tools:layout="@layout/fragment_locations" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/settingsFragment"-->
+<!--        android:name="com.ekenya.rnd.dashboard.ui.SettingsFragment"-->
+<!--        android:label="fragment_settings"-->
+<!--        tools:layout="@layout/fragment_settings" />-->
 </navigation>

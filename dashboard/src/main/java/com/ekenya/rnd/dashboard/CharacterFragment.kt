@@ -49,7 +49,7 @@ class CharacterFragment : BaseDaggerFragment() {
 
     private fun setRecyclerView() {
         binding.recyclerView.apply {
-            layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.HORIZONTAL, false)
+            layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
             adapter = characterAdapter
         }
     }
@@ -65,6 +65,7 @@ class CharacterFragment : BaseDaggerFragment() {
                     Log.d("check", "Characters: ${character.data}")
 
                     char?.let {
+                        characterAdapter = CharacterAdapter(it)
                         setRecyclerView()
                     }
                 }
