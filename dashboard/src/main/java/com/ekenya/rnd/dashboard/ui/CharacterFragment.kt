@@ -1,4 +1,4 @@
-package com.ekenya.rnd.dashboard
+package com.ekenya.rnd.dashboard.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ekenya.rnd.common.abstractions.BaseDaggerFragment
 import com.ekenya.rnd.common.utils.Status
 import com.ekenya.rnd.dashboard.adapter.CharacterAdapter
 import com.ekenya.rnd.dashboard.databinding.FragmentCharacterBinding
-import com.ekenya.rnd.dashboard.ui.HomeViewModel
 import javax.inject.Inject
 
 
@@ -47,13 +46,21 @@ class CharacterFragment : BaseDaggerFragment() {
 
     }
 
-    private fun setRecyclerView() {
-        binding.recyclerView.apply {
-            layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.HORIZONTAL, false)
-            adapter = characterAdapter
+    private fun onItemClick() {
+        characterAdapter?.onItemClick = {
+            val action = CharacterFragmentDirections.actionCharacterFragmentToDetailsFragment()
+            findNavController().navigate(action)
         }
     }
 
+
+
+    private fun setRecyclerView() {
+        binding.recyclerView.apply {
+            layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
+            adapter = characterAdapter
+        }
+    }
 
     private fun observeCharacters() {
         viewModel.observeCharacterLiveData().observe(
@@ -61,24 +68,29 @@ class CharacterFragment : BaseDaggerFragment() {
         ) { character ->
             when (character.status) {
                 Status.SUCCESS -> {
+                    binding.progressBar.visibility = View.GONE
                     val char = character.data?.results
                     Log.d("check", "Characters: ${character.data}")
 
                     char?.let {
+                        characterAdapter = CharacterAdapter(it)
                         setRecyclerView()
+                        onItemClick()
                     }
                 }
                 Status.LOADING -> {
+                    binding.progressBar.visibility = View.VISIBLE
 
                 }
                 Status.ERROR -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.errText.visibility = View.VISIBLE
 
                 }
 
             }
 
         }
-
 
     }
 }

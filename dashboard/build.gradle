@@ -2,6 +2,12 @@ plugins {
     id 'com.android.dynamic-feature'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id("kotlin-parcelize")
+
+    //safe args plugin
+    id 'androidx.navigation.safeargs'
+
+
 }
 android {
     namespace 'com.ekenya.rnd.dashboard'

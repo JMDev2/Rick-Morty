@@ -2,6 +2,7 @@
 buildscript {
     ext {
         kotlin_version = '1.8.10'
+        navigation_version = '2.7.0'  // Specify the version for navigation-safe-args-gradle-plugin
     }
     repositories {
         google()
@@ -14,7 +15,11 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
+
+        // Specify the version for navigation-safe-args-gradle-plugin
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1"
     }
+
 }
 
 

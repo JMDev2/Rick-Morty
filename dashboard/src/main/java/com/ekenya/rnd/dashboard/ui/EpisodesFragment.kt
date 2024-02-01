@@ -1,14 +1,13 @@
 package com.ekenya.rnd.dashboard.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ekenya.rnd.common.abstractions.BaseDaggerFragment
 import com.ekenya.rnd.dashboard.databinding.FragmentEpisodesBinding
 
-class episodesFragment : BaseDaggerFragment() {
+class EpisodesFragment : BaseDaggerFragment() {
    private lateinit var binding: FragmentEpisodesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

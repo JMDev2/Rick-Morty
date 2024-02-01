@@ -1,41 +1,74 @@
 package com.ekenya.rnd.dashboard
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.Navigation
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import com.ekenya.rnd.dashboard.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.ekenya.rnd.dashboard.ui.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var appBarConfiguration: AppBarConfiguration
+  private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        // Initialize the ViewBinding
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        bottomNavigationView = findViewById(R.id.nav_view)
 
-        // Assuming you have a NavHostFragment with the id "nav_host_fragment" in your activity layout.
-        val navController = Navigation.findNavController(this, R.id.fragmentContainerView)
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when(menuItem.itemId){
+                R.id.character ->{
+                    replaceFragment(CharacterFragment())
+                    true
+                }
+                R.id.episodes ->{
+                    replaceFragment(EpisodesFragment())
+                    true
+                }
+                R.id.settings ->{
+                    replaceFragment(SettingsFragment())
+                    true
+                }
+                R.id.loctaions ->{
+                    replaceFragment(LocationsFragment())
+                    true
+                }
+                else -> false
+            }
+        }
+        replaceFragment(CharacterFragment())
 
-        // Initialize the AppBarConfiguration
-        appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_character, R.id.navigation_locations, R.id.navigation_episodes, R.id.navigation_settings
-        ).build()
-
-        // Set up the ActionBar with NavController and AppBarConfiguration
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
-
-        // Set up the BottomNavigationView with the NavController
-        binding.navView?.let { NavigationUI.setupWithNavController(it, navController) }
     }
 
-    // This method is necessary if you want to handle Up navigation (back button) in your ActionBar.
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = Navigation.findNavController(this, R.id.fragmentContainerView)
-        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
+
+
+
+
+    private fun replaceFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment).commit()
     }
+
+
+
+
+
+//        // Assuming you have a NavHostFragment with the id "fragmentContainerView" in your activity layout.
+//        val navController = findNavController(R.id.fragmentContainerView)
+//
+//        // Initialize the AppBarConfiguration
+//        appBarConfiguration = AppBarConfiguration.Builder(
+//            R.id.characterFragment, R.id.LocationsFragment, R.id.EpisodesFragment, R.id.SettingsFragment
+//        ).build()
+//
+//        // Set up the ActionBar with NavController and AppBarConfiguration
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+//
+//        // Set up the BottomNavigationView with the NavController
+//        binding.navView?.let { setupWithNavController(it, navController) }
+//    }
+//
+//    // This method is necessary if you want to handle Up navigation (back button) in your ActionBar.
+//    override fun onSupportNavigateUp(): Boolean {
+
 }
