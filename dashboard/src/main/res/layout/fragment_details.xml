@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CharacterDetailsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.DetailsFragment">
 
 
     <ImageView
@@ -50,6 +50,7 @@
                         android:src="@drawable/status" />
 
                     <TextView
+                        android:id="@+id/status"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Alive"
@@ -74,6 +75,7 @@
                         android:src="@drawable/gender" />
 
                     <TextView
+                        android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Male"
@@ -164,6 +166,7 @@
                         android:src="@drawable/type" />
 
                     <TextView
+                        android:id="@+id/type"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="None"
@@ -187,6 +190,7 @@
                         android:src="@drawable/species" />
 
                     <TextView
+                        android:id="@+id/species"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Human"
@@ -300,7 +304,7 @@
                         android:src="@drawable/species" />
 
                     <TextView
-                        android:id="@+id/species"
+                        android:id="@+id/speciess"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Human"
@@ -362,7 +366,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 
 
