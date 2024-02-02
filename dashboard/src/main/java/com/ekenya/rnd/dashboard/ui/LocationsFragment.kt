@@ -13,13 +13,15 @@ import com.ekenya.rnd.common.utils.toast
 import com.ekenya.rnd.dashboard.R
 import com.ekenya.rnd.dashboard.adapter.CharacterAdapter
 import com.ekenya.rnd.dashboard.databinding.FragmentLocationsBinding
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import javax.inject.Inject
 
 
 class LocationsFragment : BaseDaggerFragment() {
    private lateinit var binding: FragmentLocationsBinding
+
+   private lateinit var homeViewModel: HomeViewModel
+
 
     private lateinit var characterAdapter: CharacterAdapter
 
@@ -46,6 +48,8 @@ class LocationsFragment : BaseDaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeCharacters()
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
 
     }
 
@@ -66,23 +70,20 @@ class LocationsFragment : BaseDaggerFragment() {
             // If top_sheet is hidden, show it
             topSheet.visibility = View.VISIBLE
 
-//            val params = topSheet.layoutParams as? ConstraintLayout.LayoutParams
-//            params?.matchConstraintPercentHeight = 0.3f  // Adjust the percentage as needed
-//            topSheet.layoutParams = params
-
-            // Adjust RecyclerView constraints
-//            val recyclerParams = recyclerView?.layoutParams as? ConstraintLayout.LayoutParams
-//            recyclerParams?.matchConstraintPercentHeight = 0.7f  // Adjust the remaining percentage
-//            recyclerView?.layoutParams = recyclerParams
-//        } else {
-//            // If top_sheet is visible, hide it
-//            topSheet?.visibility = View.GONE
-//
-//            // Adjust RecyclerView constraints
-//            val recyclerParams = recyclerView?.layoutParams as? ConstraintLayout.LayoutParams
-//            recyclerParams?.matchConstraintPercentHeight = 1f  // Full height
-//            recyclerView?.layoutParams = recyclerParams
        }
+    }
+
+    private fun displayLocationDetails(result: com.ekenya.rnd.dashboard.models.location.Result){
+        binding.locationName.text = result.name
+        binding.locationType.text = result.type
+        binding.locationDimension.text = result.dimension
+        binding.locationDate.text = result.created
+    }
+    private fun displayCharacterDetails(result: com.ekenya.rnd.dashboard.models.characters.Result){
+        binding.locationName.text = result.name
+        binding.locationType.text = result.type
+//        binding.locationDimension.text = result.dimension
+        binding.locationDate.text = result.created
     }
 
 
@@ -108,6 +109,13 @@ class LocationsFragment : BaseDaggerFragment() {
                         characterAdapter = CharacterAdapter(it)
                         setRecyclerView()
                         onItemClick()
+                        for (i in 0..it.size){
+                            displayCharacterDetails(
+                                it[i]
+                            )
+                        }
+                       // result = Result()
+
                     }
                 }
                 Status.LOADING -> {

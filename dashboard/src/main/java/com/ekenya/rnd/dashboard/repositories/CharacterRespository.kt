@@ -17,4 +17,9 @@ class CharacterRespository @Inject constructor(private val api: ApiImpl) {
         emit(Resource.loading(null))
         emit(api.getAllEpisodes())
     }.flowOn(Dispatchers.IO)
+
+    suspend fun getLocations()= flow{
+        emit(Resource.loading(null))
+        emit(api.getTheLocation())
+    }.flowOn(Dispatchers.IO)
 }

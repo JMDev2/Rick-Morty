@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -46,6 +46,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
+                    android:id="@+id/location_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Earth (C-137)"
@@ -87,6 +88,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/location_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Planet"
@@ -128,6 +130,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/location_dimension"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dimension C-137"
@@ -169,6 +172,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/location_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nov 10,2017 at \n 7:42 AM"
