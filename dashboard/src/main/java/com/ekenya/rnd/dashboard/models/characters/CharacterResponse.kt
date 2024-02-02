@@ -1,4 +1,4 @@
-package com.ekenya.rnd.dashboard.models
+package com.ekenya.rnd.dashboard.models.characters
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -6,7 +6,7 @@ import kotlinx.parcelize.RawValue
 
 
 data class CharacterResponse(
-    val info: Info,
+    val characterInfo: CharacterInfo,
     val results: List<Result>
 )
 @Parcelize
@@ -16,7 +16,7 @@ data class Result(
     val gender: String,
     val id: Int,
     val image: String,
-    val location:@RawValue Location,
+    val characterLocation:@RawValue CharacterLocation,
     val name: String,
     val origin:@RawValue Origin,
     val species: String,
@@ -24,13 +24,13 @@ data class Result(
     val type: String,
     val url: String
 ): Parcelable
-data class Info(
+data class CharacterInfo(
     val count: Int,
     val next: String,
     val pages: Int,
     val prev: Any
 )
-data class Location(
+data class CharacterLocation(
     val name: String,
     val url: String
 )
