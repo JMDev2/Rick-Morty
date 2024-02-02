@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ekenya.rnd.common.abstractions.BaseDaggerFragment
 import com.ekenya.rnd.common.utils.Status
+import com.ekenya.rnd.dashboard.R
 import com.ekenya.rnd.dashboard.adapter.CharacterAdapter
 import com.ekenya.rnd.dashboard.databinding.FragmentCharacterBinding
 import javax.inject.Inject
@@ -47,9 +48,16 @@ class CharacterFragment : BaseDaggerFragment() {
     }
 
     private fun onItemClick() {
-        characterAdapter?.onItemClick = {
-            val action = CharacterFragmentDirections.actionCharacterFragmentToDetailsFragment()
-            findNavController().navigate(action)
+        characterAdapter?.onItemClick = { char ->
+            val bundle = Bundle()
+            bundle.putParcelable("characterItem", char)
+            requireView().findNavController().navigate(
+                R.id.detailsFragment,
+                bundle
+            )
+            binding.recyclerView.adapter = characterAdapter
+
+
         }
     }
 

@@ -4,11 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ekenya.rnd.common.utils.Resource
 import com.ekenya.rnd.dashboard.databinding.CharacterLayoutBinding
-import com.ekenya.rnd.dashboard.models.CharacterResponse
-import com.ekenya.rnd.dashboard.models.Result
 import com.squareup.picasso.Picasso
+import com.ekenya.rnd.dashboard.models.characters.Result
 
 class CharacterAdapter(private val characters: List<Result>):
     RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>(){
@@ -20,13 +18,15 @@ class CharacterAdapter(private val characters: List<Result>):
         ){
             binding.characterName.text = character.name
             Picasso.get().load(character.image).into(binding.characterImage)
+
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         return CharacterViewHolder(
-            CharacterLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false), parent.context
+            CharacterLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            parent.context
         )
     }
 

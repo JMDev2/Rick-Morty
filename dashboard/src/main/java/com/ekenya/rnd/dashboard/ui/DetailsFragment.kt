@@ -1,16 +1,14 @@
 package com.ekenya.rnd.dashboard.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.ekenya.rnd.common.abstractions.BaseDaggerFragment
 import com.ekenya.rnd.dashboard.databinding.FragmentDetailsBinding
-import com.ekenya.rnd.dashboard.models.Result
+import com.ekenya.rnd.dashboard.models.characters.Result
 import com.squareup.picasso.Picasso
-
 
 class DetailsFragment : BaseDaggerFragment() {
     private lateinit var binding: FragmentDetailsBinding
@@ -42,18 +40,14 @@ class DetailsFragment : BaseDaggerFragment() {
     }
 
     private fun receiveCharacterItems() {
-        // Use DetailsFragmentArgs to retrieve the arguments
 
-        if (char != null) {
+      //  char = requireArguments().getParcelable<Result>("characterItem")!!
             binding.status.text = char.status
             binding.species.text = char.species
             binding.type.text = char.type
             binding.gender.text = char.gender
             Picasso.get().load(char.image).into(binding.characterImage)
-        } else {
-            // Handle the case where 'char' is null
-            // You may want to show an error message or navigate back
-        }
+
     }
 
 
