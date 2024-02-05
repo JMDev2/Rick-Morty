@@ -9,11 +9,13 @@ import com.ekenya.rnd.common.abstractions.BaseDaggerFragment
 import com.ekenya.rnd.dashboard.databinding.FragmentDetailsBinding
 import com.ekenya.rnd.dashboard.models.characters.Result
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.TimeZone
 
 class DetailsFragment : BaseDaggerFragment() {
     private lateinit var binding: FragmentDetailsBinding
-    private lateinit var char: Result
-    private val args: DetailsFragmentArgs by navArgs()
+
+  //  private val args: DetailsFragmentArgs by navArgs()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,15 +43,37 @@ class DetailsFragment : BaseDaggerFragment() {
 
     private fun receiveCharacterItems() {
 
-      //  char = requireArguments().getParcelable<Result>("characterItem")!!
+       val char = requireArguments().getParcelable<Result>("characterItem")!!
             binding.status.text = char.status
             binding.species.text = char.species
             binding.type.text = char.type
             binding.gender.text = char.gender
+            binding.tvName.text = char.name
+            binding.tvDate.text = char.created
             Picasso.get().load(char.image).into(binding.characterImage)
+
+
+        val timestamp = char.created // Replace with the actual timestamp from the chat message
+        val formattedTime = timestamp?.let { formatTimestampToHHMM(it) }
+        binding.tvDate.text = formattedTime
 
     }
 
+    //format the time stamp
+    fun formatTimestampToHHMM(timestamp: String): String {
+        val inputFormat = SimpleDateFormat("yyyy")
+        val outputFormat = SimpleDateFormat("HH:mm")
+
+        inputFormat.timeZone = TimeZone.getTimeZone("UTC")
+
+        try {
+            val date = inputFormat.parse(timestamp)
+            return inputFormat.format(date)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return ""
+    }
 
 
 }

@@ -53,15 +53,22 @@ class HomeViewModel @Inject constructor(private val repository: CharacterResposi
         return episodeLiveData
     }
 
+//    fun getLocations() = viewModelScope.launch {
+//        repository.getLocations().collect{
+//            when(it){
+//                Resource.loading(it.data) -> {}
+//                Resource.success(it.data, it.responseCode) -> {
+//                    _result.value = it
+//                }
+//                Resource.error(it.message, it.responseCode) -> {}
+//            }
+//        }
+//    }
+
+
     fun getLocations() = viewModelScope.launch {
         repository.getLocations().collect{
-            when(it){
-                Resource.loading(it.data) -> {}
-                Resource.success(it.data, it.responseCode) -> {
-                    _result.value = it
-                }
-                Resource.error(it.message, it.responseCode) -> {}
-            }
+            locationLiveData.postValue(it)
         }
     }
     fun observeLocations(): LiveData<Resource<LocationResponse?>>{

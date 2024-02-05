@@ -57,7 +57,6 @@ class CharacterFragment : BaseDaggerFragment() {
             )
             binding.recyclerView.adapter = characterAdapter
 
-
         }
     }
 

@@ -7,7 +7,7 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class LocationResponse(
     val info: Info? = null,
-    val results: List<Result>? = null
+    val results: List<Result>
 ): Parcelable
 
 @Parcelize

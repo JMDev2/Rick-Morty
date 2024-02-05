@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/character"
+        android:id="@+id/characterFragment"
         android:icon="@drawable/character"
         android:title="Character" />
 
     <item
-        android:id="@+id/loctaions"
+        android:id="@+id/locationsFragment"
         android:icon="@drawable/locations"
         android:title="Locations" />
 
     <item
-        android:id="@+id/episodes"
+        android:id="@+id/episodesFragment"
         android:icon="@drawable/episodes"
         android:title="Episodes" />
 
     <item
-        android:id="@+id/settings"
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/settings"
         android:title="Settings" />
 

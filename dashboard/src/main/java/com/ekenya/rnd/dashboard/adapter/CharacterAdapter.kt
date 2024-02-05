@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ekenya.rnd.dashboard.databinding.CharacterLayoutBinding
 import com.squareup.picasso.Picasso
 import com.ekenya.rnd.dashboard.models.characters.Result
+import java.text.SimpleDateFormat
+import java.util.TimeZone
 
 class CharacterAdapter(private val characters: List<Result>):
     RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>(){
@@ -39,5 +41,6 @@ class CharacterAdapter(private val characters: List<Result>):
     }
 
     override fun getItemCount(): Int = characters.size
+
 
 }

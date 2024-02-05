@@ -14,6 +14,7 @@ import com.ekenya.rnd.dashboard.R
 import com.ekenya.rnd.dashboard.adapter.CharacterAdapter
 import com.ekenya.rnd.dashboard.databinding.FragmentLocationsBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.ekenya.rnd.dashboard.models.characters.Result
 import javax.inject.Inject
 
 
@@ -24,6 +25,9 @@ class LocationsFragment : BaseDaggerFragment() {
 
 
     private lateinit var characterAdapter: CharacterAdapter
+    //private lateinit var characterResult: Result
+    private lateinit var locationResult: com.ekenya.rnd.dashboard.models.location.Result
+
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
@@ -57,6 +61,7 @@ class LocationsFragment : BaseDaggerFragment() {
         characterAdapter?.onItemClick = { char ->
             toast("click")
             toggleTopSheetVisibility()
+            displayLocationDetails()
 
 
         }
@@ -73,18 +78,41 @@ class LocationsFragment : BaseDaggerFragment() {
        }
     }
 
-    private fun displayLocationDetails(result: com.ekenya.rnd.dashboard.models.location.Result){
-        binding.locationName.text = result.name
-        binding.locationType.text = result.type
-        binding.locationDimension.text = result.dimension
-        binding.locationDate.text = result.created
+    val res = com.ekenya.rnd.dashboard.models.location.Result(created = "", dimension = null, id, name = "", residents = null, type = "", url = "")
+
+    private fun displayLocationDetails(){
+           viewModel.observeLocations().observe(
+               viewLifecycleOwner
+           ){
+               location ->
+               when(location.status){
+                   Status.SUCCESS ->{
+                       val loc = location.data?.results
+                       Log.d("checkloacaion", "location: ${location.data}")
+                       Log.d("checkloacaionid", "id: ${res.id}")
+                       loc?.let {
+//                           binding.locationName.text = loc
+                           binding.locationType.text = res.type
+                           binding.locationDimension.text = res.dimension
+                           binding.locationDate.text = res.created
+                       }
+                   }
+                   Status.ERROR ->{
+
+                   }
+                   Status.LOADING ->{
+
+                   }
+               }
+           }
+
     }
-    private fun displayCharacterDetails(result: com.ekenya.rnd.dashboard.models.characters.Result){
-        binding.locationName.text = result.name
-        binding.locationType.text = result.type
-//        binding.locationDimension.text = result.dimension
-        binding.locationDate.text = result.created
-    }
+//    private fun displayCharacterDetails(result: com.ekenya.rnd.dashboard.models.characters.Result){
+//        binding.locationName.text = result.name
+//        binding.locationType.text = result.type
+////        binding.locationDimension.text = result.dimension
+//        binding.locationDate.text = result.created
+//    }
 
 
 
@@ -109,11 +137,11 @@ class LocationsFragment : BaseDaggerFragment() {
                         characterAdapter = CharacterAdapter(it)
                         setRecyclerView()
                         onItemClick()
-                        for (i in 0..it.size){
-                            displayCharacterDetails(
-                                it[i]
-                            )
-                        }
+//                        for (i in 0..it.size){
+//                            displayCharacterDetails(
+//                                it[i]
+//                            )
+//                        }
                        // result = Result()
 
                     }
