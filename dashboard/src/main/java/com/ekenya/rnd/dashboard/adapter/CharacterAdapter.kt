@@ -22,7 +22,6 @@ class CharacterAdapter(private val characters: List<Result>):
             Picasso.get().load(character.image).into(binding.characterImage)
 
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
@@ -39,7 +38,6 @@ class CharacterAdapter(private val characters: List<Result>):
             onItemClick.invoke(characters[position])
         }
     }
-
     override fun getItemCount(): Int = characters.size
 
 

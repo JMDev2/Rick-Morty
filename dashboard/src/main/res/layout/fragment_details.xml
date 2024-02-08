@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.DetailsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:navigationIcon="@drawable/keyboard_backspace"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:title="Character Details"
+            app:titleTextColor="@color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <ImageView
@@ -14,13 +34,13 @@
         android:scaleType="fitXY"
         android:src="@drawable/rmicon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="25dp"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/character_image">
 
         <LinearLayout
@@ -38,12 +58,12 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
                     android:layout_marginStart="43dp"
                     android:gravity="center"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <ImageView
@@ -56,9 +76,9 @@
                         android:id="@+id/status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Alive"
                         android:layout_marginStart="5dp"
                         android:gravity="center"
+                        android:text="Alive"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -66,11 +86,11 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginEnd="80dp"
                     android:gravity="center"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/imageView3"
@@ -83,10 +103,10 @@
                         android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Male"
                         android:layout_marginStart="5dp"
                         android:gravity="center"
-                        android:textSize="15sp"/>
+                        android:text="Male"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -95,26 +115,26 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
 
                 <LinearLayout
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="STATUS"
-                        android:textColor="#68bb79"
-                        android:padding="10dp"
                         android:background="#f3f2f7"
+                        android:padding="10dp"
+                        android:text="STATUS"
                         android:textAlignment="center"
+                        android:textColor="#68bb79"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -123,19 +143,19 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="GENDER"
                         android:background="#f3f2f7"
-                        android:textColor="#d0615d"
                         android:padding="10dp"
+                        android:text="GENDER"
                         android:textAlignment="center"
-                        android:textSize="16sp"/>
+                        android:textColor="#d0615d"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -146,8 +166,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -159,10 +179,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginStart="43dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <ImageView
@@ -175,8 +195,8 @@
                         android:id="@+id/type"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="None"
                         android:gravity="center"
+                        android:text="None"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -184,10 +204,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginEnd="80dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:layout_width="50dp"
@@ -199,9 +219,9 @@
                         android:id="@+id/species"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Human"
                         android:gravity="center"
-                        android:textSize="15sp"/>
+                        android:text="Human"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -210,26 +230,26 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
 
                 <LinearLayout
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="TYPR"
-                        android:textColor="#e5bffc"
-                        android:padding="10dp"
                         android:background="#f3f2f7"
+                        android:padding="10dp"
+                        android:text="TYPE"
                         android:textAlignment="center"
+                        android:textColor="#e5bffc"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -238,19 +258,19 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="SOECIES"
                         android:background="#f3f2f7"
-                        android:textColor="#b4d8f0"
                         android:padding="10dp"
+                        android:text="SPECIES"
                         android:textAlignment="center"
-                        android:textSize="18sp"/>
+                        android:textColor="#b4d8f0"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -260,8 +280,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -273,10 +293,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginStart="43dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <ImageView
@@ -284,15 +304,16 @@
                         android:layout_width="35dp"
                         android:layout_height="25dp"
                         android:layout_weight="1"
-                        android:src="@drawable/type" />
+                        android:src="@drawable/name" />
 
                     <TextView
                         android:id="@+id/tvName"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="None"
                         android:ellipsize="end"
+                        android:maxLines="1"
                         android:gravity="center"
+                        android:text="None"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -300,24 +321,24 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginEnd="80dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="30dp"
                         android:layout_weight="1"
-                        android:src="@drawable/species" />
+                        android:src="@drawable/time" />
 
                     <TextView
                         android:id="@+id/tvDate"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Human"
                         android:gravity="center"
-                        android:textSize="15sp"/>
+                        android:text="Human"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -326,26 +347,26 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
 
 
                 <LinearLayout
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="NAME"
-                        android:textColor="#e5bffc"
-                        android:padding="10dp"
                         android:background="#f3f2f7"
+                        android:padding="10dp"
+                        android:text="NAME"
                         android:textAlignment="center"
+                        android:textColor="#FFC107"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -354,19 +375,19 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="DATE"
                         android:background="#f3f2f7"
-                        android:textColor="#b4d8f0"
                         android:padding="10dp"
+                        android:text="DATE"
                         android:textAlignment="center"
-                        android:textSize="18sp"/>
+                        android:textColor="#FF5722"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -374,9 +395,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

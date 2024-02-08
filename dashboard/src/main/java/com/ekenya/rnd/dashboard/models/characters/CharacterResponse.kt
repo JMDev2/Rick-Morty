@@ -16,7 +16,7 @@ data class Result(
     val gender: String,
     val id: Int,
     val image: String,
-    val characterLocation:@RawValue CharacterLocation,
+    val location:@RawValue Location,
     val name: String,
     val origin:@RawValue Origin,
     val species: String,
@@ -30,7 +30,7 @@ data class CharacterInfo(
     val pages: Int,
     val prev: Any
 )
-data class CharacterLocation(
+data class Location(
     val name: String,
     val url: String
 )

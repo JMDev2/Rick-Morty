@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ekenya.rnd.common.abstractions.BaseDaggerFragment
+import com.ekenya.rnd.common.utils.SHaredPreference
 import com.ekenya.rnd.common.utils.Status
 import com.ekenya.rnd.dashboard.R
 import com.ekenya.rnd.dashboard.adapter.CharacterAdapter
@@ -45,10 +46,20 @@ class CharacterFragment : BaseDaggerFragment() {
 
         observeCharacters()
 
+
+
+
     }
 
     private fun onItemClick() {
         characterAdapter?.onItemClick = { char ->
+
+            char.id?.let { id ->
+                SHaredPreference.setSelectedCharacterId(requireContext(), id)
+                Log.d("SelectedCharacterId", "pref ID: $id")
+            }
+
+
             val bundle = Bundle()
             bundle.putParcelable("characterItem", char)
             requireView().findNavController().navigate(
@@ -59,7 +70,6 @@ class CharacterFragment : BaseDaggerFragment() {
 
         }
     }
-
 
 
     private fun setRecyclerView() {
@@ -77,7 +87,8 @@ class CharacterFragment : BaseDaggerFragment() {
                 Status.SUCCESS -> {
                     binding.progressBar.visibility = View.GONE
                     val char = character.data?.results
-                    Log.d("check", "Characters: ${character.data}")
+
+                    Log.d("check", "Characters: ${character.data?.results}")
 
                     char?.let {
                         characterAdapter = CharacterAdapter(it)

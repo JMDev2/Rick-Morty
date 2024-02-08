@@ -5,6 +5,8 @@ import com.ekenya.rnd.dashboard.models.episodes.EpisodeResponse
 import com.ekenya.rnd.dashboard.models.location.LocationResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("character")
@@ -17,9 +19,9 @@ interface ApiService {
 
     ): Response<EpisodeResponse>
 
-    @GET("location")
-    suspend fun getLocations(
-
+    @GET("location/{id}")
+    suspend fun getLocation(
+        @Path("id") id: Int
     ): Response<LocationResponse>
 
 }
